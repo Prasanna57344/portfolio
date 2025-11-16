@@ -1,280 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kamisetty Lakshmi Prasanna | Python Developer</title>
+  <meta charset="UTF-8" />
+  <title>Kamisetty Lakshmi Prasanna | CSE Fresher Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --card: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2933;
+    }
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    body {
+      background: radial-gradient(circle at top, #111827 0, #020617 60%);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-    <style>
-        body { font-family: "Poppins", sans-serif; }
-        .glow { transition: 0.2s; }
-        .glow:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-        }
-    </style>
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0 1.5rem;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    nav a {
+      margin-left: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0,1.6fr) minmax(0,1.1fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 1.5rem 0 3rem;
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      max-width: 32rem;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #f9fafb;
+      font-weight: 600;
+      box-shadow: 0 14px 30px rgba(15,23,42,0.8);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+    }
+
+    .btn-outline {
+      border-color: rgba(148,163,184,0.6);
+      color: var(--muted);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .hero-card {
+      background: rgba(11,16,32,0.95);
+      border-radius: 1.1rem;
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(15,23,42,0.85);
+    }
+
+    .hero-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.9rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-card li {
+      font-size: 0.9rem;
+      margin-bottom: 0.45rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      font-size: 1.35rem;
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--accent);
+      padding-left: 0.6rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(11,16,32,0.9);
+      border-radius: 1.1rem;
+      padding: 1.25rem 1.4rem;
+      border: 1px solid var(--border);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.35rem;
+    }
+
+    .skill-chip {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      padding: 0.25rem 0.7rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(15,23,42,0.8);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 1.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline {
+      border-left: 1px solid rgba(75,85,99,0.8);
+      margin-top: 0.6rem;
+      padding-left: 1rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 0.9rem;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 999px;
+      position: absolute;
+      left: -1.55rem;
+      top: 0.35rem;
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .timeline-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 0.6rem;
+    }
+
+    .contact-item {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.8);
+      padding: 1.1rem 0 0.7rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    @media (max-width:900px) {
+      header {
+        flex-direction: column;
+        align-items:flex-start;
+        gap:0.4rem;
+      }
+      .hero {
+        grid-template-columns:1fr;
+      }
+      .two-col {
+        grid-template-columns:1fr;
+      }
+    }
+    @media (max-width:600px) {
+      nav a {
+        margin-left:0.75rem;
+        font-size:0.85rem;
+      }
+      .hero-subtitle {
+        font-size:0.9rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-[#020617] text-white scroll-smooth">
+<body>  
+  <div class="container">
+    <header>
+      <div class="logo">Kamisetty Lakshmi Prasanna</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-    <!-- NAV -->
-    <nav class="p-5 flex justify-between items-center max-w-6xl mx-auto">
-        <h1 class="text-2xl font-bold text-blue-400 tracking-wide">
-            Lakshmi<span class="text-white"> Prasanna</span>
+    <section class="hero">
+      <div>
+        <div class="chip">CSE Fresher • Python Developer</div>
+        <h1 class="hero-title">
+          Hi, I'm <span>Kamisetty Lakshmi Prasanna</span> 👋<br />
+          I build smart and simple software solutions.
         </h1>
-        <div class="space-x-6 text-gray-300 text-sm md:text-base">
-            <a href="#about" class="hover:text-blue-400">About</a>
-            <a href="#skills" class="hover:text-blue-400">Skills</a>
-            <a href="#projects" class="hover:text-blue-400">Projects</a>
-            <a href="#contact" class="hover:text-blue-400">Contact</a>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <section class="mt-16 md:mt-24 text-center px-4">
-        <p class="text-sm uppercase tracking-[0.3em] text-gray-400">Python Developer • Fresher • Full Stack Trainee</p>
-
-        <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-snug">
-            Hi, I'm <span class="text-blue-400">Kamisetty Lakshmi Prasanna</span> 👋<br />
-            I build AI & web-based applications.
-        </h2>
-
-        <p class="mt-4 text-gray-300 max-w-2xl mx-auto text-sm md:text-base">
-            B.Tech CSE graduate from K.S.R.M College of Engineering, passionate about
-            <span class="text-blue-300">Python, Machine Learning, and Full Stack Development</span>.
-            I enjoy turning ideas into real projects like stock price forecasting and recommendation systems.
+        <p class="hero-subtitle">
+          I'm a Computer Science & Engineering graduate who loves working with
+          <strong>Python, Web Development, and Machine Learning</strong>.
+          I enjoy converting ideas into working projects and learning new technologies.
         </p>
+        <div class="btn-row">
+          <a href="YOUR_RESUME_LINK_HERE" class="btn btn-primary" target="_blank">📄 Download Resume</a>
+          <a href="https://github.com/Prasanna57344" class="btn btn-outline" target="_blank">💻 GitHub</a>
+          <a href="https://www.linkedin.com/in/kamisetty-lakshmi-prasanna-3315a227b/" class="btn btn-outline" target="_blank">🔗 LinkedIn</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h3>Currently focusing on</h3>
+        <ul>
+          <li>Strengthening core Python & SQL</li>
+          <li>Building full stack projects (HTML, CSS, JS, Django/Flask)</li>
+          <li>Practicing DSA & problem solving</li>
+          <li>Improving communication and interview skills</li>
+        </ul>
+      </aside>
+    </section>
 
-        <div class="mt-8 flex justify-center flex-wrap gap-4">
-            <!-- TODO: REPLACE WITH YOUR RESUME LINK -->
-            <a href="YOUR_RESUME_LINK_HERE"
-               target="_blank"
-               class="glow px-6 py-3 bg-blue-500 rounded-full font-semibold text-sm md:text-base">
-               📄 Download Resume
-            </a>
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="two-col">
+        <div class="card">
+          <p>
+            I'm a <strong>Computer Science & Engineering fresher</strong> with a strong
+            interest in <strong>software development, web technologies, and AI/ML</strong>.
+            I enjoy building projects that connect concepts I learn in class with
+            real-world applications.
+          </p>
+          <br />
+          <p class="muted">
+            I am a quick learner, comfortable working in teams, and always open to
+            feedback. My goal is to grow as a developer, write clean code, and
+            contribute to meaningful products.
+          </p>
+        </div>
+        <div class="card">
+          <strong>Highlights</strong>
+          <ul class="muted" style="margin-top:0.5rem; list-style:disc; padding-left:1.1rem;">
+            <li>B.Tech in CSE (Year of Graduation: 2025)</li>
+            <li>Hands-on projects in Python and web development</li>
+            <li>Basic understanding of Machine Learning workflows</li>
+            <li>Comfortable with Git, GitHub and collaboration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-            <!-- ✅ Your GitHub -->
-            <a href="https://github.com/Prasanna57344"
-               target="_blank"
-               class="glow px-6 py-3 border border-blue-500 rounded-full font-semibold text-sm md:text-base hover:bg-blue-500">
-               💻 Visit My GitHub
-            </a>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="two-col">
+        <div class="card">
+          <strong>Programming & Core</strong>
+          <div class="chips">
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">C / C++ (Basics)</span>
+            <span class="skill-chip">OOP Concepts</span>
+            <span class="skill-chip">Data Structures & Algorithms (Basics)</span>
+            <span class="skill-chip">SQL</span>
+          </div>
 
-            <!-- TODO: REPLACE WITH YOUR LINKEDIN -->
-            <a href="https://www.linkedin.com/in/kamisetty-lakshmi-prasanna-3315a227b/"
-               target="_blank"
-               class="glow px-6 py-3 border border-gray-500 rounded-full text-sm md:text-base hover:border-blue-400">
-               🔗 Connect on LinkedIn
-            </a>
+          <strong style="display:block; margin-top:0.9rem;">Web Development</strong>
+          <div class="chips">
+            <span class="skill-chip">HTML5</span>
+            <span class="skill-chip">CSS3</span>
+            <span class="skill-chip">Responsive Design</span>
+            <span class="skill-chip">JavaScript (Basics)</span>
+            <span class="skill-chip">Bootstrap / Simple CSS</span>
+          </div>
         </div>
 
-        <p class="mt-4 text-xs text-gray-400">
-            Currently based in <span class="text-blue-300">Bengaluru</span> and open to Python / Full Stack Developer roles.
+        <div class="card">
+          <strong>Tools & Technologies</strong>
+          <div class="chips">
+            <span class="skill-chip">Git & GitHub</span>
+            <span class="skill-chip">VS Code</span>
+            <span class="skill-chip">Jupyter Notebook</span>
+            <span<class="skill-chip">MySQL / SQLite</span>
+            <span class="skill-chip">REST APIs</span>
+          </div>
+
+          <strong style="display:block; margin-top:0.9rem;">Areas of Interest</strong>
+          <div class="chips">
+            <span class="skill-chip">Full Stack Development</span>
+            <span class="skill-chip">Machine Learning</span>
+            <span class="skill-chip">Problem Solving</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="card">
+          <div class="project-title">Stock Price Forecasting using ML</div>
+          <div class="project-meta">Python • Machine Learning • Data Visualization</div>
+          <p class="muted">
+            Built a model to analyze historical stock data and predict future trends
+            using supervised learning techniques. Implemented data cleaning,
+            feature engineering, and visualized results using charts.
+          </p>
+          <p style="margin-top:0.5rem; font-size:0.85rem;">
+            🔗 <a href="https://github.com/Prasanna57344/Stock-Price-Forecasting-Using-LSTM-and-GRU---PYTHON" target="_blank">View on GitHub</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="project-title">Telugu Movie Recommendation System</div>
+          <div class="project-meta">Python • Streamlit • TF-IDF • Cosine Similarity</div>
+          <p class="muted">
+            Built a content-based recommender for Telugu movies. Utilized text features and similarity scoring to suggest films.
+          </p>
+          <p style="margin-top:0.5rem; font-size:0.85rem;">
+            🔗 <a href="https://github.com/Prasanna57344/Telugu-Movie-Recommendation-System" target="_blank">View on GitHub</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="project-title">Personal Portfolio Website</div>
+          <div class="project-meta">HTML • CSS</div>
+          <p class="muted">
+            Created this portfolio website to showcase skills, projects, and education in a responsive, modern format.
+          </p>
+          <p style="margin-top:0.5rem; font-size:0.85rem;">
+            🔗 <a href="https://github.com/Prasanna57344/portfolio" target="_blank">Source Code</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="card">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">B.Tech in Computer Science & Engineering</div>
+            <div class="timeline-sub">K.S.R.M College of Engineering, Kadapa • 2021-2025 CGPA:8.0</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">Intermediate / +2</div>
+            <div class="timeline-sub">SRI CHAITANYA JUNIOR COLLEGE • 2021 • 89</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">SSC / 10th</div>
+            <div class="timeline-sub">ZPHSCHOOL ANANTHAMPALLI • 2019 • GPA:9.2 </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p class="muted">
+          I am looking for roles such as Software Developer / Python Developer / Full Stack Developer (Fresher). Feel free to reach out for internships or full-time roles.
         </p>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="max-w-5xl mx-auto mt-20 px-4">
-        <h3 class="text-2xl font-semibold border-l-4 border-blue-400 pl-3">About Me</h3>
-
-        <div class="mt-6 grid md:grid-cols-2 gap-6">
-            <div class="bg-[#020617] border border-slate-700 rounded-xl p-5">
-                <p class="text-gray-200 text-sm md:text-base leading-relaxed">
-                    I'm a <strong>Computer Science & Engineering graduate (2025)</strong> with a strong focus on
-                    <strong>Python development, SQL, and AI/ML concepts</strong>. I love building practical projects
-                    that connect theory with real-world applications.
-                </p>
-                <p class="mt-3 text-gray-400 text-sm md:text-base">
-                    Recently, I worked on a stock market analyzer that uses LSTM & GRU models for price forecasting,
-                    technical indicators, and sentiment analysis. I also built a Telugu movie recommendation system using
-                    content-based filtering.
-                </p>
-                <p class="mt-3 text-gray-400 text-sm md:text-base">
-                    I’m continuously improving my problem-solving skills, data structures, and full stack development so
-                    that I can contribute effectively as a software developer.
-                </p>
-            </div>
-
-            <div class="space-y-4">
-                <div class="bg-[#020617] border border-slate-700 rounded-xl p-5">
-                    <h4 class="font-semibold text-blue-300 text-sm">Education</h4>
-                    <p class="mt-2 text-gray-300 text-sm">
-                        🎓 B.Tech – Computer Science & Engineering<br />
-                        K.S.R.M College of Engineering (UGC Autonomous), Kadapa<br />
-                        Year of Graduation: 2025
-                    </p>
-                </div>
-
-                <div class="bg-[#020617] border border-slate-700 rounded-xl p-5">
-                    <h4 class="font-semibold text-blue-300 text-sm">What I'm Focusing On</h4>
-                    <ul class="mt-2 text-gray-300 text-sm list-disc list-inside space-y-1">
-                        <li>Strengthening Python, SQL and problem solving</li>
-                        <li>Building end-to-end web apps with Django / Flask / APIs</li>
-                        <li>Practicing coding interviews and aptitude</li>
-                        <li>Improving communication and technical explanation skills</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="contact-row">
+          <div class="contact-item">📧 Email: <a href="mailto:lakshmiprasanna6010@gmail.com">lakshmiprasanna6010@gmail.com</a></div>
+          <div class="contact-item">🔗 LinkedIn: <a href="https://www.linkedin.com/in/kamisetty-lakshmi-prasanna-3315a227b/" target="_blank">linkedin.com/in/kamisetty-lakshmi-prasanna-3315a227b</a></div>
+          <div class="contact-item">💻 GitHub: <a href="https://github.com/Prasanna57344" target="_blank">github.com/Prasanna57344</a></div>
         </div>
+      </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="max-w-5xl mx-auto mt-20 px-4">
-        <h3 class="text-2xl font-semibold border-l-4 border-blue-400 pl-3">Skills</h3>
+    <footer>© <span id="year"></span> Kamisetty Lakshmi Prasanna. All rights reserved.</footer>
+  </div>
 
-        <div class="mt-6 grid md:grid-cols-2 gap-6">
-            <div class="bg-[#020617] border border-slate-700 rounded-xl p-5">
-                <h4 class="font-semibold text-blue-300 text-sm">Programming & Core</h4>
-                <div class="mt-3 flex flex-wrap gap-2">
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">Python</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">SQL</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">OOPs</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">Data Structures (Basics)</span>
-                </div>
-
-                <h4 class="font-semibold text-blue-300 text-sm mt-5">Web & Frameworks</h4>
-                <div class="mt-3 flex flex-wrap gap-2">
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">HTML</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">CSS</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">JavaScript (Basics)</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">Django (Learning)</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">Flask (Basics)</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">Streamlit</span>
-                </div>
-            </div>
-
-            <div class="bg-[#020617] border border-slate-700 rounded-xl p-5">
-                <h4 class="font-semibold text-blue-300 text-sm">Data, ML & Tools</h4>
-                <div class="mt-3 flex flex-wrap gap-2">
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">Pandas</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">NumPy</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">Scikit-learn (Basics)</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">TensorFlow/Keras (Basics)</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">Git & GitHub</span>
-                    <span class="bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full text-xs">VS Code</span>
-                </div>
-
-                <p class="mt-4 text-gray-400 text-xs md:text-sm">
-                    I regularly practice coding, build mini-projects, and use GitHub to track my progress.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="max-w-5xl mx-auto mt-20 px-4">
-        <h3 class="text-2xl font-semibold border-l-4 border-blue-400 pl-3">Projects</h3>
-
-        <div class="mt-6 grid md:grid-cols-2 gap-6">
-            <!-- Stock Project -->
-            <div class="bg-[#020617] border border-slate-700 rounded-xl p-5 glow">
-                <h4 class="text-lg font-semibold text-blue-300">
-                    AI Stock Price Forecasting Using LSTM & GRU
-                </h4>
-                <p class="text-gray-400 text-xs mt-1">
-                    Python • Streamlit • TensorFlow • Plotly • yfinance
-                </p>
-                <p class="mt-3 text-gray-200 text-sm">
-                    An AI-powered stock market analyzer that uses LSTM and GRU models to predict future
-                    stock prices. It combines technical indicators (SMA, EMA, RSI, MACD), sentiment analysis
-                    of news headlines, and an interactive dashboard built with Streamlit.
-                </p>
-                <!-- TODO: REPLACE WITH YOUR GITHUB REPO LINK -->
-                <a href="https://github.com/Prasanna57344/Stock-Price-Forecasting-Using-LSTM-and-GRU---PYTHON"
-                   target="_blank"
-                   class="inline-block mt-4 text-blue-400 text-sm">
-                   🔗 View Project on GitHub
-                </a>
-            </div>
-
-            <!-- Telugu Movie Recommendation -->
-            <div class="bg-[#020617] border border-slate-700 rounded-xl p-5 glow">
-                <h4 class="text-lg font-semibold text-blue-300">
-                    Telugu Movie Recommendation System
-                </h4>
-                <p class="text-gray-400 text-xs mt-1">
-                    Python • Streamlit • Scikit-learn • TF-IDF • Cosine Similarity
-                </p>
-                <p class="mt-3 text-gray-200 text-sm">
-                    A content-based movie recommendation system for Telugu films. It uses TF-IDF features
-                    on movie tags and cosine similarity to suggest similar movies. The system is deployed
-                    as an interactive Streamlit web app.
-                </p>
-                <!-- TODO: REPLACE WITH YOUR GITHUB REPO LINK -->
-                <a href="YOUR_MOVIE_PROJECT_GITHUB_LINK"
-                   target="_blank"
-                   class="inline-block mt-4 text-blue-400 text-sm">
-                   🔗 View Project on GitHub
-                </a>
-            </div>
-
-            <!-- Placeholder for future project -->
-            <div class="bg-[#020617] border border-slate-700 rounded-xl p-5 md:col-span-2">
-                <h4 class="text-lg font-semibold text-blue-300">
-                    [Upcoming] Full Stack Web Application
-                </h4>
-                <p class="text-gray-400 text-xs mt-1">
-                    Django / Flask • REST APIs • Database • Authentication
-                </p>
-                <p class="mt-3 text-gray-200 text-sm">
-                    Planned project: a full stack Python web application with user authentication, CRUD
-                    operations, and database integration to showcase end-to-end development skills.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="max-w-5xl mx-auto mt-20 mb-16 px-4">
-        <h3 class="text-2xl font-semibold border-l-4 border-blue-400 pl-3">Contact</h3>
-
-        <div class="mt-6 bg-[#020617] border border-slate-700 rounded-xl p-5">
-            <p class="text-gray-200 text-sm md:text-base">
-                I’m actively looking for opportunities as a
-                <strong>Python Developer / Full Stack Developer / Software Engineer (Fresher)</strong>.
-                Feel free to reach out for roles, internships, or collaborations.
-            </p>
-
-            <div class="mt-4 space-y-2 text-gray-300 text-sm md:text-base">
-                <!-- TODO: REPLACE WITH YOUR EMAIL -->
-                <p>📧 Email:
-                    <a href="mailto:lakshmiprasanna6010@gmail.com" class="text-blue-400">
-                        lakshmiprasanna6010@gmail.com
-                    </a>
-                </p>
-
-                <!-- TODO: REPLACE WITH YOUR LINKEDIN -->
-                <p>🔗 LinkedIn:
-                    <a href="https://www.linkedin.com/in/kamisetty-lakshmi-prasanna-3315a227b/"
-                       target="_blank"
-                       class="text-blue-400">
-                        linkedin
-                    </a>
-                </p>
-
-                <!-- ✅ Your GitHub -->
-                <p>💻 GitHub:
-                    <a href="https://github.com/Prasanna57344"
-                       target="_blank"
-                       class="text-blue-400">
-                        github.com/Prasanna57344
-                    </a>
-                </p>
-            </div>
-        </div>
-
-        <p class="mt-4 text-center text-gray-500 text-xs">
-            © <span id="year"></span> Kamisetty Lakshmi Prasanna. Built with HTML, Tailwind CSS & ❤️.
-        </p>
-    </section>
-
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
